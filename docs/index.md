@@ -4,7 +4,7 @@ icon: lucide/rocket
 
 # EchoFish Documentation
 
-For full documentation visit [zensical.org](https://zensical.org/docs/).
+EchoFish is designed for the process, archive, and visualization of sonar water column data. The backend processes raw echosounder data using echopype to create cloud-native Zarr stores for each cruise sensor array. The data is cataloged in an Amazon NOAA Open Data Dissemination (NODD) bucket for public access. The frontend integrates a high-level map viewer where users can select from a collection of cruise track-lines and then interactively visualize water column data. Echofish will serve as a feature input for the NOAA Center for AI.
 
 ## Commands
 
