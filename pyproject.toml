@@ -1,0 +1,40 @@
+[project]
+site_name = "EchoFish"
+
+name = "water-column-sonar-documentation"
+version = "26.10.0"
+authors = [
+    { name = "Rudy Klucik", email = "rudy.klucik@noaa.gov" },
+]
+maintainers = [
+    { name = "Rudy Klucik", email = "rudy.klucik@noaa.gov" },
+]
+description = "Documentation for the EchoFish project"
+keywords = ["ocean", "water column sonar", "zarr"]
+readme = "README.md"
+requires-python = ">=3.13"
+license = "MIT"
+license-files = ["LICENSE"]
+
+# uv sync --all-groups --upgrade
+dependencies = [
+    #"geopandas==1.1.4",
+#    "markdown",
+#    ,
+#    "mkdocs-material",
+#    "mkdocs-material-extensions",
+#    "mkdocs-git-revision-date-localized-plugin",
+#    "zensical"
+]
+
+[project.urls]
+Homepage = "https://echo.fish"
+Repository = "https://github.com/CI-CMG/water-column-sonar-documentation"
+Documentation = "https://github.com/CI-CMG/water-column-sonar-documentation"
+Issues = "https://github.com/CI-CMG/water-column-sonar-documentation/issues"
+
+[dependency-groups]
+dev = [
+    "zensical>=0.0.73",
+]
+# uv run zensical
