@@ -1,18 +1,25 @@
 [project]
-site_url = "https://www.example.com/"
-site_name = "Documentation"
+site_url = "https://docs.echo.fish/"
+site_name = "EchoFish Documentation"
 # site_description = "Your project description"
-# site_author = "Your name"
+site_author = "Rudy Klucik"
 
 # copyright = "Copyright &copy; 2026 Your name"
 
-# repo_url = "https://github.com/user/repo"
+repo_url = "https://github.com/CI-CMG/water-column-sonar-documentation"
 # repo_name = "user/repo"
 # edit_uri = "edit/main/docs/"
 
 nav = [
   { "Get started" = "index.md" },
-  { "Markdown in 5min" = "markdown.md" },
+  { "Sonar AI" = "sonarai.md" },
+  { "Semantic Annotations" = "annotation.md" },
+  { "STAC Catalog" = "catalog.md" },
+  { "Neo4J Knowledge Graph" = "knowledgeGraph.md" },
+  { "OSPool Processing" = "ospool.md" },
+  { "Python Processing" = "processing.md" },
+  { "Front End Development" = "ui.md" },
+  { "Visualization" = "visualization.md" },
 ]
 
 # extra_css = ["stylesheets/extra.css"]
