@@ -1,0 +1,55 @@
+# No guardrails, deploying directly to front end!
+name: Deploy to https://docs.echo.fish
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    name: Build Echofish Documentation
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [20.x]
+
+    environment: prod
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Configure Git Credentials
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: 3.x
+
+      - run: echo "cache_id=$(date --utc '+%V')" >> $GITHUB_ENV
+
+      - uses: actions/cache@v4
+        with:
+          key: zensical-${{ env.cache_id }}
+          path: ~/.cache
+          restore-keys: |
+            zensical-
+
+      - run: pip install zensical
+
+      - run: zensical build
+
+      - run: aws s3 cp --recursive ./site/ s3://docs.echo.fish/
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+
+      - run: aws cloudfront create-invalidation --distribution-id ETBCV8U1RCT2T --paths '/*'
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+
